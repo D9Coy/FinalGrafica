@@ -1,5 +1,6 @@
 # coding: utf-8
 #David Beltran Coy - Oscar Miticanoy
+#Final Grafica 1.0
 #Librerias
 import os
 import pygame
