@@ -1,6 +1,6 @@
 # coding: utf-8
 #David Beltran Coy - Oscar Miticanoy
-#Final Grafica 1.0
+#Final Grafica 1.1
 #Librerias
 import os
 import pygame
@@ -77,22 +77,22 @@ def TiempoJuego():
     global centSeg, unidSeg, deceSeg, unidMin, deceMin, nivelador, ReiniciarTiempo 
     nivelador+=1
     if nivelador == 7:
-       nivelador=0
-       centSeg+=1
+        nivelador=0
+        centSeg+=1
     if centSeg==9:
-       centSeg=0
-       unidSeg+=1
+        centSeg=0
+        unidSeg+=1
     if unidSeg==10:
-       unidSeg=0
-       deceSeg+=1
+        unidSeg=0
+        deceSeg+=1
     if deceSeg==6:
-       deceSeg=0
-       unidMin+=1
+        deceSeg=0
+        unidMin+=1
     if unidMin==10:
-       unidMin=0
-       deceMin+=1
+        unidMin=0
+        deceMin+=1
     if deceMin==10:
-       deceMin=0
+        deceMin=0
                                      
 def ConcatenacionTiempo(decMin ,uniMin ,decSeg ,uniSeg ,cenSeg):  
     timeText=''
@@ -151,13 +151,13 @@ class Personaje(pygame.sprite.Sprite):
 
     def ObtenerDibujoPersonaje(self):
         if self.izquierda == True:
-              self.image=self.Retroceder.subsurface(self.PersonajeRetroceder[self.cual])
+            self.image=self.Retroceder.subsurface(self.PersonajeRetroceder[self.cual])
         if self.izquierda == False:
-              self.image=self.Avanzar.subsurface(self.PersonajeAvanzar[self.cual])
+            self.image=self.Avanzar.subsurface(self.PersonajeAvanzar[self.cual])
       
     def update(self): 
         if self.cual > 13:
-           self.cual = 4
+            self.cual = 4
         self.ObtenerDibujoPersonaje()
         self.Gravedad()
 
@@ -180,12 +180,12 @@ class Personaje(pygame.sprite.Sprite):
 
     def Gravedad(self):
         if self.cambio_y == 0:
-           self.cambio_y = 1
+            self.cambio_y = 1
         else:
-           self.cambio_y += .35
+            self.cambio_y += .35
         if self.rect.y >= BASE_PERSONAJE - self.rect.height and self.cambio_y >= 0:
-           self.cambio_y = 0
-           self.rect.y = BASE_PERSONAJE - self.rect.height
+            self.cambio_y = 0
+            self.rect.y = BASE_PERSONAJE - self.rect.height
 
     def Saltar(self):
         self.rect.y += 2
@@ -260,13 +260,13 @@ class Personaje2(pygame.sprite.Sprite):
 
     def ObtenerDibujoPersonaje(self):
         if self.izquierda == True:
-              self.image=self.Retroceder.subsurface(self.PersonajeRetroceder[self.cual])
+            self.image=self.Retroceder.subsurface(self.PersonajeRetroceder[self.cual])
         if self.izquierda == False:
-              self.image=self.Avanzar.subsurface(self.PersonajeAvanzar[self.cual])
+            self.image=self.Avanzar.subsurface(self.PersonajeAvanzar[self.cual])
       
     def update(self): 
         if self.cual > 13:
-           self.cual = 4
+            self.cual = 4
         self.ObtenerDibujoPersonaje()
         self.Gravedad()
 
@@ -289,12 +289,12 @@ class Personaje2(pygame.sprite.Sprite):
 
     def Gravedad(self):
         if self.cambio_y == 0:
-           self.cambio_y = 1
+            self.cambio_y = 1
         else:
-           self.cambio_y += .35
+            self.cambio_y += .35
         if self.rect.y >= BASE_PERSONAJE - self.rect.height and self.cambio_y >= 0:
-           self.cambio_y = 0
-           self.rect.y = BASE_PERSONAJE - self.rect.height
+            self.cambio_y = 0
+            self.rect.y = BASE_PERSONAJE - self.rect.height
 
     def Saltar(self):
         self.rect.y += 2
@@ -329,7 +329,7 @@ class DisparoDerecha( pygame.sprite.Sprite ):
     def update( self ):
         self.rect.move_ip((10,0))
         if self.rect.left >= ANCHO or EliminarDisparo == True:
-           self.kill()
+            self.kill()
 
 class DisparoIzquierda( pygame.sprite.Sprite ):
     def __init__( self, posx, posy):
@@ -342,7 +342,7 @@ class DisparoIzquierda( pygame.sprite.Sprite ):
     def update( self ):
         self.rect.move_ip((-10,0))
         if self.rect.right <= 0 or EliminarDisparo == True:
-           self.kill()
+            self.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
 class DisparoDerechaEnemy( pygame.sprite.Sprite ):
     def __init__( self, posx, posy):
@@ -355,7 +355,7 @@ class DisparoDerechaEnemy( pygame.sprite.Sprite ):
     def update( self ):
         self.rect.move_ip((10,0))
         if self.rect.left >= ANCHO or EliminarDisparo == True:
-           self.kill()
+            self.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
 class FondoAnimado( pygame.sprite.Sprite ):
     def __init__( self, posx, posy):
@@ -367,18 +367,18 @@ class FondoAnimado( pygame.sprite.Sprite ):
 
     def update( self ):
         if scroll:
-           if FondoDerecha == True:
-              if self.rect.right <= ANCHO:
-                 self.rect.right = ANCHO
-                 personaje.AvanzarDerecha()
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if self.rect.left >= 0:
-                 self.rect.left = 0
-                 personaje.AvanzarIzquierda()
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if self.rect.right <= ANCHO:
+                    self.rect.right = ANCHO
+                    personaje.AvanzarDerecha()
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if self.rect.left >= 0:
+                    self.rect.left = 0
+                    personaje.AvanzarIzquierda()
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 #------------------------------------------------------------------------------------------------------------------------------------------------
 class FondoAnimado2( pygame.sprite.Sprite ):
     def __init__( self, posx, posy):
@@ -390,18 +390,18 @@ class FondoAnimado2( pygame.sprite.Sprite ):
 
     def update( self ):
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if self.rect.right <= ANCHO:
-                 self.rect.right = ANCHO
-                 personaje2.AvanzarDerecha()
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if self.rect.left >= 0:
-                 self.rect.left = 0
-                 personaje2.AvanzarIzquierda()
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if self.rect.right <= ANCHO:
+                    self.rect.right = ANCHO
+                    personaje2.AvanzarDerecha()
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if self.rect.left >= 0:
+                    self.rect.left = 0
+                    personaje2.AvanzarIzquierda()
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 #------------------------------------------------------------------------------------------------------------------------------------------------
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self):
@@ -411,16 +411,16 @@ class Plataforma(pygame.sprite.Sprite):
 
     def update(self):
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
                  
 class PlataformasNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -465,16 +465,16 @@ class Plataforma2(pygame.sprite.Sprite):
 
     def update(self):
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class PlataformasNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -570,16 +570,16 @@ class Llamas(pygame.sprite.Sprite):
 
     def update(self):
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class LlamasNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -658,37 +658,37 @@ class YellowGrunt(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class YellowGruntNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -760,45 +760,45 @@ class RedGrunt(pygame.sprite.Sprite):
 
     def obtenerDibujo(self):
         if self.izquierda:
-           self.image=self.RedGrunt2.subsurface(self.redgrunt2[self.cual])
+            self.image=self.RedGrunt2.subsurface(self.redgrunt2[self.cual])
         else:
-           self.image=self.RedGrunt1.subsurface(self.redgrunt1[self.cual])
+            self.image=self.RedGrunt1.subsurface(self.redgrunt1[self.cual])
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           if self.cual == 4:
-              disparoenemigo = True
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            if self.cual == 4:
+                disparoenemigo = True
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class RedGruntNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -869,37 +869,37 @@ class Elite(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class EliteNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -972,37 +972,37 @@ class YellowGrunt2(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class YellowGruntNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -1061,45 +1061,45 @@ class RedGrunt2(pygame.sprite.Sprite):
 
     def obtenerDibujo(self):
         if self.izquierda:
-           self.image=self.RedGrunt2.subsurface(self.redgrunt2[self.cual])
+            self.image=self.RedGrunt2.subsurface(self.redgrunt2[self.cual])
         else:
-           self.image=self.RedGrunt1.subsurface(self.redgrunt1[self.cual])
+            self.image=self.RedGrunt1.subsurface(self.redgrunt1[self.cual])
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           if self.cual == 4:
-              disparoenemigo = True
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            if self.cual == 4:
+                disparoenemigo = True
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class RedGruntNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -1170,37 +1170,37 @@ class Elite2(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class EliteNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -1267,37 +1267,37 @@ class JackalMayor(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 6:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 6:
+                self.cual = 0
+                self.obtenerDibujo()
+                self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class JackalMayorNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -1359,43 +1359,43 @@ class Hunter(pygame.sprite.Sprite):
 
     def obtenerDibujo(self):
         if self.izquierda:
-           self.image=self.Hunter2.subsurface(self.hunter2[self.cual])
+            self.image=self.Hunter2.subsurface(self.hunter2[self.cual])
         else:
-           self.image=self.Hunter1.subsurface(self.hunter1[self.cual])
+            self.image=self.Hunter1.subsurface(self.hunter1[self.cual])
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 8:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 8:
+                self.cual = 0
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class HunterNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -1457,37 +1457,37 @@ class Brute(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 100 < pygame.time.get_ticks():
-           self.cual += 1
-           if self.cual > 5:
-              self.cual = 0
-           self.obtenerDibujo()
-           self.actualizacion= pygame.time.get_ticks()
+            self.cual += 1
+            if self.cual > 5:
+                self.cual = 0
+            self.obtenerDibujo()
+            self.actualizacion= pygame.time.get_ticks()
         
         TiempoMovimiento =pygame.time.get_ticks()/1000         
         t = TiempoMovimiento
         if t==2 or t==6 or t==10 or t==14 or t==18 or t==22 or t==26 or t==30 or t==34 or t==38 or t==42 or t==46 or t==50 or t==54 or t==58 or t==62 or t==66 or t==70 or t==74 or t==78 or t==82 or t==86 or t==90 or t==94 or t==98 or t==102 or t==106 or t==110 or t==114 or t==118 or t==122 or t==126 or t==130 or t==134 or t==138 or t==142 or t==146 or t==150 or t==154 or t==158 or t==162  or t==166 or t==170 or t==174 or t==178 or t==182 or t==186 or t==190 or t==194 or t==198 or t==202:
-           self.izquierda = True
+            self.izquierda = True
 
                 
         if t==4 or t==8 or t==12 or t==16 or t==20 or t==24 or t==28 or t==32 or t==36 or t==40 or t==44 or t==48 or t==52 or t==56 or t==60 or t==64 or t==68 or t==72 or t==76 or t==80 or t==84 or t==88 or t==92 or t==96 or t==100 or t==104 or t==108 or t==112 or t==116 or t==120 or t==124 or t==128 or t==132 or t==136 or t==140 or t==144 or t==148 or t==152 or t==156 or t==160 or t==164 or t==168 or t==172 or t==176 or t==180 or t==184 or t==188 or t==192 or t==196 or t==200 or t==204:
-           self.izquierda = False
+            self.izquierda = False
 
         if self.izquierda == True:
-           self.rect.move_ip(-self.dx,0)
+            self.rect.move_ip(-self.dx,0)
         else:
-           self.rect.move_ip(self.dx,0)
+            self.rect.move_ip(self.dx,0)
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+            else:
+                self.rect.move_ip(VELOCIDAD,0)
 
 class BruteNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -1528,22 +1528,22 @@ class Vidas(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 40 < pygame.time.get_ticks():
-           self.rect.move_ip(0,self.dy)
-           if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
-              self.dy = -self.dy
-           self.actualizacion= pygame.time.get_ticks()
+            self.rect.move_ip(0,self.dy)
+            if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
+                self.dy = -self.dy
+            self.actualizacion= pygame.time.get_ticks()
 
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class VidasNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -1578,22 +1578,22 @@ class Balas(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 40 < pygame.time.get_ticks():
-           self.rect.move_ip(0,self.dy)
-           if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
-              self.dy = -self.dy
-           self.actualizacion= pygame.time.get_ticks()
+            self.rect.move_ip(0,self.dy)
+            if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
+                self.dy = -self.dy
+            self.actualizacion= pygame.time.get_ticks()
 
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class BalasNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -1628,22 +1628,22 @@ class Meta(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 40 < pygame.time.get_ticks():
-          # self.rect.move_ip(0,self.dy)
-           if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
-              self.dy = -self.dy
-           self.actualizacion= pygame.time.get_ticks()
+            # self.rect.move_ip(0,self.dy)
+            if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
+                self.dy = -self.dy
+            self.actualizacion= pygame.time.get_ticks()
 
         if scroll:
-           if FondoDerecha == True:
-              if personaje.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha == False:
-              if personaje.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha == True:
+                if personaje.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha == False:
+                if personaje.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class MetaNivel1(pygame.sprite.Sprite):
     def __init__(self):
@@ -1678,22 +1678,21 @@ class Vidas2(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 40 < pygame.time.get_ticks():
-           self.rect.move_ip(0,self.dy)
-           if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
-              self.dy = -self.dy
-           self.actualizacion= pygame.time.get_ticks()
-
+            self.rect.move_ip(0,self.dy)
+            if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
+                self.dy = -self.dy
+            self.actualizacion= pygame.time.get_ticks()
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class VidasNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -1727,22 +1726,22 @@ class Balas2(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 40 < pygame.time.get_ticks():
-           self.rect.move_ip(0,self.dy)
-           if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
-              self.dy = -self.dy
-           self.actualizacion= pygame.time.get_ticks()
+            self.rect.move_ip(0,self.dy)
+            if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
+                self.dy = -self.dy
+            self.actualizacion= pygame.time.get_ticks()
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class BalasNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -1776,22 +1775,22 @@ class Meta2(pygame.sprite.Sprite):
 
     def update(self):
         if self.actualizacion + 40 < pygame.time.get_ticks():
-          # self.rect.move_ip(0,self.dy)
-           if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
-              self.dy = -self.dy
-           self.actualizacion= pygame.time.get_ticks()
+            # self.rect.move_ip(0,self.dy)
+            if self.rect.bottom > self.maximo or self.rect.top < self.minimo:
+                self.dy = -self.dy
+            self.actualizacion= pygame.time.get_ticks()
 
         if movimiento2 == True:
-           if FondoDerecha2 == True:
-              if personaje2.rect.x > 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(-VELOCIDAD,0)
-           if FondoDerecha2 == False:
-              if personaje2.rect.x < 680:
-                 self.rect.move_ip(0,0)
-              else:
-                 self.rect.move_ip(VELOCIDAD,0)
+            if FondoDerecha2 == True:
+                if personaje2.rect.x > 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(-VELOCIDAD,0)
+            if FondoDerecha2 == False:
+                if personaje2.rect.x < 680:
+                    self.rect.move_ip(0,0)
+                else:
+                    self.rect.move_ip(VELOCIDAD,0)
 
 class MetaNivel2(pygame.sprite.Sprite):
     def __init__(self):
@@ -1813,26 +1812,25 @@ class MetaNivel2(pygame.sprite.Sprite):
 #------------------------------------------------------------------------------------------------------------------------------------------------
 class Sounds():
     def __init__(self):
-       self.EnterMenu = pygame.mixer.Sound(os.path.join("EnterMenu.wav"))
-       self.EnterMenu.set_volume(1)
-       self.Pausa = pygame.mixer.Sound(os.path.join("Pausa.wav"))
-       self.Pausa.set_volume(1)
-       self.Salto = pygame.mixer.Sound(os.path.join("Saltar.wav"))
-       self.Salto.set_volume(0.2)
-       self.Halo_headgun = pygame.mixer.Sound(os.path.join("Halo_gun.wav"))
-       self.Halo_headgun.set_volume(0.8)
-       self.Destruido = pygame.mixer.Sound(os.path.join("devildying.wav"))
-       self.Destruido.set_volume(1)
-       self.death = pygame.mixer.Sound(os.path.join("death.wav"))
-       self.death.set_volume(1)
-       self.GameOver = pygame.mixer.Sound(os.path.join("GameOver.wav"))
-       self.GameOver.set_volume(1)
-       self.MasVida = pygame.mixer.Sound(os.path.join("Halovida.wav"))
-       self.MasVida.set_volume(1)
-       self.MasBala = pygame.mixer.Sound(os.path.join("Balas.wav"))
-       self.MasBala.set_volume(1)
-       self.Meta = pygame.mixer.Sound(os.path.join("One_Final_Effort.wav"))
-       self.Meta.set_volume(1)
+        self.EnterMenu = pygame.mixer.Sound(os.path.join("EnterMenu.wav"))
+        self.EnterMenu.set_volume(1)
+        self.Pausa = pygame.mixer.Sound(os.path.join("Pausa.wav"))
+        self.Pausa.set_volume(1)
+        self.Salto = pygame.mixer.Sound(os.path.join("Saltar.wav"))
+        self.Salto.set_volume(0.2)
+        self.Halo_headgun = pygame.mixer.Sound(os.path.join("Halo_gun.wav"))
+        self.Halo_headgun.set_volume(0.8)
+        self.Destruido = pygame.mixer.Sound(os.path.join("devildying.wav"))
+        self.Destruido.set_volume(1).self.death = pygame.mixer.Sound(os.path.join("death.wav"))
+        self.death.set_volume(1)
+        self.GameOver = pygame.mixer.Sound(os.path.join("GameOver.wav"))
+        self.GameOver.set_volume(1)
+        self.MasVida = pygame.mixer.Sound(os.path.join("Halovida.wav"))
+        self.MasVida.set_volume(1)
+        self.MasBala = pygame.mixer.Sound(os.path.join("Balas.wav"))
+        self.MasBala.set_volume(1)
+        self.Meta = pygame.mixer.Sound(os.path.join("One_Final_Effort.wav"))
+        self.Meta.set_volume(1)
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #INICIALIZACION DE VARIABLES
 pygame.init()
@@ -1850,7 +1848,7 @@ pygame.display.set_caption(" HALO ")
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #DIMENSIONES DEL MENU
 MenuX = 410
-MenuY = 478
+MenuY = 478 
 DimensionMenu = [MenuX,MenuY]
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #DIMENSIONES DEL MENU DE PAUSA
@@ -1859,7 +1857,7 @@ MenuPausaY = 478
 DimensionMenuPausa = [MenuPausaX,MenuPausaY]
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #IMAGENES Y MUSICA DEL MENU
-Seleccion = pygame.image.load('halo1.ico').convert_alpha()
+Seleccion = pygame.image.load('halo1.png').convert_alpha()
 pygame.mixer.music.load('Musicafondo.mp3')
 pygame.mixer.music.play(-1)
 #------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1917,75 +1915,75 @@ def TextoMenuPausa(texto, posx, posy, negro):
 pos5 = -350
 tiempo5 = 0
 def MovimientoTitulo():
-   global pos5, tiempo5
-   pos5 = pos5 + 5
-   if pos5 > 500:
-      pos5 = 500
+    global pos5, tiempo5
+    pos5 = pos5 + 5
+    if pos5 > 500:
+        pos5 = 500
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos6 = -500
 tiempo6 = 0
 def MovimientoGameOver():
-   global pos6, tiempo6
-   pos6 = pos6 + 3
-   if pos6 > 500:
-      pos6 = 500
+    global pos6, tiempo6
+    pos6 = pos6 + 3
+    if pos6 > 500:
+        pos6 = 500
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos7 = -350
 tiempo7 = 0
 def MovimientoNivel1Completo():
-   global pos7, tiempo7
-   pos7 = pos7 + 2
-   if pos7 > 250:
-      pos7 = 250
+    global pos7, tiempo7
+    pos7 = pos7 + 2
+    if pos7 > 250:
+        pos7 = 250
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos8 = 1000
 def MovimientoLogoUniversidad():
-   global pos8
-   pos8 = pos8 - 4
-   if pos8 < 250:
-      pos8 = 250
+    global pos8
+    pos8 = pos8 - 4
+    if pos8 < 250:
+        pos8 = 250
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos9 = 2200
 def MovimientoComputador():
-   global pos9
-   pos9 = pos9 - 4
-   if pos9 < 600:
-      pos9 = 600
+    global pos9
+    pos9 = pos9 - 4
+    if pos9 < 600:
+        pos9 = 600
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos11 = 1900
 def MovimientoNombre1():
-   global pos11
-   pos11 = pos11 - 2
-   if pos11 < 660:
-      pos11 = 660
+    global pos11
+    pos11 = pos11 - 2
+    if pos11 < 660:
+        pos11 = 660
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos12 = 2000
 def MovimientoNombre2():
-   global pos12
-   pos12 = pos12 - 2
-   if pos12 < 710:
-      pos12 = 710
+    global pos12
+    pos12 = pos12 - 2
+    if pos12 < 710:
+        pos12 = 710
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos13 = -200
 def MovimientoMision1Completa():
-   global pos13
-   pos13 = pos13 + 2
-   if pos13 > 485:
-      pos13 = 485
+    global pos13
+    pos13 = pos13 + 2
+    if pos13 > 485:
+        pos13 = 485
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos14 = 1400
 def MovimientoPresioneEspacioMeta():
-   global pos14
-   pos14 = pos14 - 2
-   if pos14 < 430:
-      pos14 = 430
+    global pos14
+    pos14 = pos14 - 2
+    if pos14 < 430:
+        pos14 = 430
 #------------------------------------------------------------------------------------------------------------------------------------------------
 pos15 = 1400
 def MovimientoPresioneEspacioGameOver():
-   global pos15
-   pos15 = pos15 - 2
-   if pos15 < 400:
-      pos15 = 400
+    global pos15
+    pos15 = pos15 - 2
+    if pos15 < 400:
+        pos15 = 400
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #################################################### FUNCION PRINCIPAL DE INICIO DEL JUEGO #################################################### 
 #------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2069,337 +2067,335 @@ def IniciarJuego():
     global event, scroll, FondoDerecha, EliminarDisparo, MenuPausaY, DimensionMenuPausa, Puntaje
     global centSeg, unidSeg, deceSeg, unidMin, deceMin, PausaTiempo, CambioNivel2, CantidadVidas, CantidadBalas
     while salir != True: 
-       reloj.tick(60) 
-       tecla = pygame.key.get_pressed()
-       for event in pygame.event.get():   
-           if event.type == pygame.QUIT:
-              salir = True
-           if tecla[pygame.K_s]:
-              sys.exit()
-           if tecla[pygame.K_SPACE]:
+        reloj.tick(60) 
+        tecla = pygame.key.get_pressed()
+        for event in pygame.event.get():   
+            if event.type == pygame.QUIT:
+                salir = True
+            if tecla[pygame.K_s]:
+                sys.exit()
+            if tecla[pygame.K_SPACE]:
                 print "Disparar"
                 personaje.cual = 2
                 scroll = False
                 if CantidadBalas == 0 or CantidadVidas == 0 or FinMeta == True:
-                   CantidadBalas = CantidadBalas
+                    CantidadBalas = CantidadBalas
                 else:
-                   sounds.Halo_headgun.play()
-                   CantidadBalas -= 1
-                   if personaje.izquierda == True:
-                      DisparosGrupo.add(DisparoIzquierda(personaje.rect.left-10, personaje.rect.y+40))
-                   if personaje.izquierda == False:
-                      DisparosGrupo.add(DisparoDerecha(personaje.rect.right-10, personaje.rect.y+40))
+                    sounds.Halo_headgun.play()
+                    CantidadBalas -= 1
+                    if personaje.izquierda == True:
+                        DisparosGrupo.add(DisparoIzquierda(personaje.rect.left-10, personaje.rect.y+40))
+                    if personaje.izquierda == False:
+                        DisparosGrupo.add(DisparoDerecha(personaje.rect.right-10, personaje.rect.y+40))
 #------------------------------------------------------------------------------------------------------------------------------------------------   
-       if event.type == pygame.KEYDOWN:
-
-          if tecla[pygame.K_RIGHT]:
-             personaje.izquierda = False
-             FondoDerecha = True
-             if CantidadVidas == 0 or FinMeta == True:
-                  scroll = False
-             else:
-                if pygame.time.get_ticks()-personaje.tiempo > personaje.cuanto:
-                   personaje.tiempo = pygame.time.get_ticks()
-                   personaje.cual +=1
-                if personaje.rect.x >= 680:
-                   scroll = True
-                   personaje.cambio_x = 0
-                if personaje.rect.x < 680:    
-                   scroll = False
-                   personaje.AvanzarDerecha()
-
-          if tecla[pygame.K_LEFT]:
-             personaje.izquierda = True
-             FondoDerecha = False
-             if CantidadVidas == 0 or FinMeta == True:
+        if event.type == pygame.KEYDOWN:
+            if tecla[pygame.K_RIGHT]:
+                personaje.izquierda = False
+                FondoDerecha = True
+                if CantidadVidas == 0 or FinMeta == True:
+                    scroll = False
+                else:
+                    if pygame.time.get_ticks()-personaje.tiempo > personaje.cuanto:
+                        personaje.tiempo = pygame.time.get_ticks()
+                        personaje.cual +=1
+                    if personaje.rect.x >= 680:
+                        scroll = True
+                        personaje.cambio_x = 0
+                    if personaje.rect.x < 680:    
+                        scroll = False
+                        personaje.AvanzarDerecha()
+                        
+            if tecla[pygame.K_LEFT]:
+                personaje.izquierda = True
+                FondoDerecha = False
+                if CantidadVidas == 0 or FinMeta == True:
+                    scroll = False
+                else:
+                    if pygame.time.get_ticks()-personaje.tiempo > personaje.cuanto:
+                        personaje.tiempo = pygame.time.get_ticks()
+                        personaje.cual +=1
+                    if personaje.rect.x <= 680:
+                        scroll = True
+                        personaje.cambio_x = 0
+                    if personaje.rect.x > 680:    
+                        scroll = False
+                        personaje.AvanzarIzquierda()
+            
+            if tecla[pygame.K_UP]:
+                sounds.Salto.play()
+                personaje.Saltar()
+                personaje.cual = 1
+            
+            if tecla[pygame.K_DOWN]:
                 scroll = False
-             else:
-                if pygame.time.get_ticks()-personaje.tiempo > personaje.cuanto:
-                   personaje.tiempo = pygame.time.get_ticks()
-                   personaje.cual +=1
-                if personaje.rect.x <= 680:
-                   scroll = True
-                   personaje.cambio_x = 0
-                if personaje.rect.x > 680:    
-                   scroll = False
-                   personaje.AvanzarIzquierda()
-
-          if tecla[pygame.K_UP]:
-             sounds.Salto.play()
-             personaje.Saltar()
-             personaje.cual = 1
-
-
-          if tecla[pygame.K_DOWN]:
-             scroll = False
-             personaje.Agacharse()
-             personaje.cual = 0
+                personaje.Agacharse()
+                personaje.cual = 0
 #------------------------------------------------------------------------------------------------------------------------------------------------
-          if tecla[pygame.K_ESCAPE]:
-             if FinMeta == True or FinGameOver == True:
-                Pausa = False
-             else:
-                Pausa = True
-                OpcionMenuPausa = 1
-                pygame.mixer.music.pause()
-                sounds.Pausa.play(-1)
-                while Pausa:
-                   reloj.tick(60) 
-                   tecla = pygame.key.get_pressed()
-                   for event in pygame.event.get():
-                      if event.type == pygame.QUIT:
-                         pygame.quit()
-                      if tecla[pygame.K_UP] and OpcionMenuPausa > 1 and MenuPausaY > DimensionMenuPausa[1]:
-                         OpcionMenuPausa -= 1
-                         MenuPausaY = MenuPausaY-40
-                      if tecla[pygame.K_DOWN] and OpcionMenuPausa < 3 and MenuPausaY > DimensionMenuPausa[0]:
-                         OpcionMenuPausa += 1
-                         MenuPausaY = MenuPausaY+40
-                      if tecla[K_RETURN]:
-	                 if OpcionMenuPausa == 1:
-	                    print "REANUDAR JUEGO"
-                            sounds.Pausa.stop()
-                            sounds.EnterMenu.play()
-                            Pausa = False
-                            pygame.mixer.music.unpause()
-	                 if OpcionMenuPausa == 2:
-                            print "VOLVER AL MENU PRINCIPAL"
-                            sounds.Pausa.stop()
-                            sounds.EnterMenu.play()
-	                    salir = True
-                            Pausa = False
-                            pygame.mixer.music.load('Musicafondo.mp3')
-                            pygame.mixer.music.play(-1)
-                            Menu(opcion)
-	                 if OpcionMenuPausa == 3:
-                            sounds.EnterMenu.play()
-                            sys.exit()
-                   MenuPausa(OpcionMenuPausa)
-                   pygame.display.update()
+            if tecla[pygame.K_ESCAPE]:
+                if FinMeta == True or FinGameOver == True:
+                    Pausa = False
+                else:
+                    Pausa = True
+                    OpcionMenuPausa = 1
+                    pygame.mixer.music.pause()
+                    sounds.Pausa.play(-1)
+                    while Pausa:
+                        reloj.tick(60) 
+                        tecla = pygame.key.get_pressed()
+                        for event in pygame.event.get():
+                            if event.type == pygame.QUIT:
+                                pygame.quit()
+                            if tecla[pygame.K_UP] and OpcionMenuPausa > 1 and MenuPausaY > DimensionMenuPausa[1]:
+                                OpcionMenuPausa -= 1
+                                MenuPausaY = MenuPausaY-40
+                            if tecla[pygame.K_DOWN] and OpcionMenuPausa < 3 and MenuPausaY > DimensionMenuPausa[0]:
+                                OpcionMenuPausa += 1
+                                MenuPausaY = MenuPausaY+40
+                            if tecla[K_RETURN]:
+                                if OpcionMenuPausa == 1:
+                                    print "REANUDAR JUEGO"
+                                    sounds.Pausa.stop()
+                                    sounds.EnterMenu.play()
+                                    Pausa = False
+                                    pygame.mixer.music.unpause()
+                                if OpcionMenuPausa == 2:
+                                    print "VOLVER AL MENU PRINCIPAL"
+                                    sounds.Pausa.stop()
+                                    sounds.EnterMenu.play()
+                                    salir = True
+                                    Pausa = False
+                                    pygame.mixer.music.load('Musicafondo.mp3')
+                                    pygame.mixer.music.play(-1)
+                                    Menu(opcion)
+                                if OpcionMenuPausa == 3:
+                                    sounds.EnterMenu.play()
+                                    sys.exit()
+                        MenuPausa(OpcionMenuPausa)
+                        pygame.display.update()
 #------------------------------------------------------------------------------------------------------------------------------------------------                   
-       if event.type == pygame.KEYUP:
-          personaje.cual = 3
-
-          if tecla[pygame.K_SPACE]:
-             personaje.cual = 2
-
-          if tecla[pygame.K_RIGHT]:
-             personaje.Detenerse()
-             scroll = False
-
-          if tecla[pygame.K_LEFT]:
-             personaje.Detenerse()
-             scroll = False
+        if event.type == pygame.KEYUP:
+            personaje.cual = 3
+            
+            if tecla[pygame.K_SPACE]:
+                personaje.cual = 2
+            
+            if tecla[pygame.K_RIGHT]:
+                personaje.Detenerse()
+                scroll = False
+            
+            if tecla[pygame.K_LEFT]:
+                personaje.Detenerse()
+                scroll = False
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       Puntos = FuenteEstadisticas.render("Puntaje = " + str(Puntaje), True, blanco)
+        Puntos = FuenteEstadisticas.render("Puntaje = " + str(Puntaje), True, blanco)
 
-       ColisionBalasYellowGrunt = pygame.sprite.groupcollide(DisparosGrupo, personaje.posicionyellowgrunt.ListaYellowGrunt, True, True)
-       for yellowgrunt in ColisionBalasYellowGrunt:
-          print "+100 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          yellowgrunt.kill()
-          Puntaje += 100
+        ColisionBalasYellowGrunt = pygame.sprite.groupcollide(DisparosGrupo, personaje.posicionyellowgrunt.ListaYellowGrunt, True, True)
+        for yellowgrunt in ColisionBalasYellowGrunt:
+            print "+100 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            yellowgrunt.kill()
+            Puntaje += 100
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasRedGrunt = pygame.sprite.groupcollide(DisparosGrupo, personaje.posicionredgrunt.ListaRedGrunt, True, True)
-       for redgrunt in ColisionBalasRedGrunt:
-          print "+100 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          redgrunt.kill()
-          Puntaje += 100
+        ColisionBalasRedGrunt = pygame.sprite.groupcollide(DisparosGrupo, personaje.posicionredgrunt.ListaRedGrunt, True, True)
+        for redgrunt in ColisionBalasRedGrunt:
+            print "+100 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            redgrunt.kill()
+            Puntaje += 100
+    #------------------------------------------------------------------------------------------------------------------------------------------------
+        ColisionBalasElite = pygame.sprite.groupcollide(DisparosGrupo, personaje.posicionelite.ListaElite, True, True)
+        for elite in ColisionBalasElite:
+            print "+300 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            elite.kill()
+            Puntaje += 300
+    #------------------------------------------------------------------------------------------------------------------------------------------------
+        ColisionBalasPlataforma = pygame.sprite.groupcollide(DisparosGrupo, personaje.nivel.ListaPlataformas, True, False)
+        for plataforma in ColisionBalasPlataforma:
+            sounds.Salto.stop()
+    #------------------------------------------------------------------------------------------------------------------------------------------------
+        Vidas = FuenteEstadisticas.render("Vidas = " + str(CantidadVidas), True, blanco)
+        ColisionModificableVidas = pygame.sprite.spritecollide(personaje, personaje.posicionvida.ListaVidas, False)
+        for vida in ColisionModificableVidas:
+            print "+1 Vida"
+            sounds.Salto.stop()
+            sounds.MasVida.play()
+            vida.kill()
+            CantidadVidas += 1
+    #------------------------------------------------------------------------------------------------------------------------------------------------
+        ColisionPersonajeYellowGrunt = pygame.sprite.spritecollide(personaje, personaje.posicionyellowgrunt.ListaYellowGrunt, False)
+        for yellowgrunt in ColisionPersonajeYellowGrunt:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas == 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                personaje.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 1
+                yellowgrunt.kill()
+    #------------------------------------------------------------------------------------------------------------------------------------------------
+        ColisionPersonajeRedGrunt = pygame.sprite.spritecollide(personaje, personaje.posicionredgrunt.ListaRedGrunt, False)
+        for redgrunt in ColisionPersonajeRedGrunt:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas == 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                (x, y) = redgrunt.rect.center
+                ListaSpritesActivos.add(Explocion(x, y))
+                yellowgrunt.kill()
+                FinGameOver = True
+                redgrunt.kill()
+                personaje.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                (x, y) = redgrunt.rect.center
+                ListaSpritesActivos.add(Explocion(x, y))
+                yellowgrunt.kill()
+                CantidadVidas -= 1
+                redgrunt.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasElite = pygame.sprite.groupcollide(DisparosGrupo, personaje.posicionelite.ListaElite, True, True)
-       for elite in ColisionBalasElite:
-          print "+300 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          elite.kill()
-          Puntaje += 300
+        ColisionPersonajeElite = pygame.sprite.spritecollide(personaje, personaje.posicionelite.ListaElite, False)
+        for elite in ColisionPersonajeElite:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas -2 <= 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                elite.kill()
+                personaje.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 2
+                elite.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasPlataforma = pygame.sprite.groupcollide(DisparosGrupo, personaje.nivel.ListaPlataformas, True, False)
-       for plataforma in ColisionBalasPlataforma:
-          sounds.Salto.stop()
+        Balas = FuenteEstadisticas.render("Balas = " + str(CantidadBalas), True, blanco)
+        ColisionModificableBalas = pygame.sprite.spritecollide(personaje, personaje.posicionbala.ListaBalas, False)
+        for bala in ColisionModificableBalas:
+            print "+6 Balas"
+            sounds.Salto.stop()
+            sounds.MasBala.play()
+            bala.kill()
+            CantidadBalas += 6
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       Vidas = FuenteEstadisticas.render("Vidas = " + str(CantidadVidas), True, blanco)
-
-       ColisionModificableVidas = pygame.sprite.spritecollide(personaje, personaje.posicionvida.ListaVidas, False)
-       for vida in ColisionModificableVidas:
-          print "+1 Vida"
-          sounds.Salto.stop()
-          sounds.MasVida.play()
-          vida.kill()
-          CantidadVidas += 1
+        ColisionMeta = pygame.sprite.spritecollide(personaje, personaje.posicionmeta.ListaMeta, False)
+        for meta in ColisionMeta:
+            print "META, FIN DE NIVEL"
+            FinMeta = True
+            personaje.kill()
+            EliminarDisparo = True
+            PausaTiempo = True
+            sounds.Meta.play()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeYellowGrunt = pygame.sprite.spritecollide(personaje, personaje.posicionyellowgrunt.ListaYellowGrunt, False)
-       for yellowgrunt in ColisionPersonajeYellowGrunt:
-          print "-1 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-          if CantidadVidas == 0:
-             CantidadVidas = 0
-             print "GAME OVER"
-             FinGameOver = True
-             personaje.kill()
-             EliminarDisparo = True
-             PausaTiempo = True
-             sounds.GameOver.play(-1)
-          else:
-             CantidadVidas -= 1
-             yellowgrunt.kill()
-#------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeRedGrunt = pygame.sprite.spritecollide(personaje, personaje.posicionredgrunt.ListaRedGrunt, False)
-       for redgrunt in ColisionPersonajeRedGrunt:
-          print "-1 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-          if CantidadVidas == 0:
-             CantidadVidas = 0
-             print "GAME OVER"
-             (x, y) = redgrunt.rect.center
-             ListaSpritesActivos.add(Explocion(x, y))
-             yellowgrunt.kill()
-             FinGameOver = True
-             redgrunt.kill()
-             personaje.kill()
-             EliminarDisparo = True
-             PausaTiempo = True
-             sounds.GameOver.play(-1)
-          else:
-             (x, y) = redgrunt.rect.center
-             ListaSpritesActivos.add(Explocion(x, y))
-             yellowgrunt.kill()
-             CantidadVidas -= 1
-             redgrunt.kill()
-#------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeElite = pygame.sprite.spritecollide(personaje, personaje.posicionelite.ListaElite, False)
-       for elite in ColisionPersonajeElite:
-          print "-1 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-          if CantidadVidas -2 <= 0:
-             CantidadVidas = 0
-             print "GAME OVER"
-             FinGameOver = True
-             elite.kill()
-             personaje.kill()
-             EliminarDisparo = True
-             PausaTiempo = True
-             sounds.GameOver.play(-1)
-          else:
-             CantidadVidas -= 2
-             elite.kill()
-#------------------------------------------------------------------------------------------------------------------------------------------------
-       Balas = FuenteEstadisticas.render("Balas = " + str(CantidadBalas), True, blanco)
-       ColisionModificableBalas = pygame.sprite.spritecollide(personaje, personaje.posicionbala.ListaBalas, False)
-       for bala in ColisionModificableBalas:
-          print "+6 Balas"
-          sounds.Salto.stop()
-          sounds.MasBala.play()
-          bala.kill()
-          CantidadBalas += 6
-#------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionMeta = pygame.sprite.spritecollide(personaje, personaje.posicionmeta.ListaMeta, False)
-       for meta in ColisionMeta:
-          print "META, FIN DE NIVEL"
-          FinMeta = True
-          personaje.kill()
-          EliminarDisparo = True
-          PausaTiempo = True
-          sounds.Meta.play()
-#------------------------------------------------------------------------------------------------------------------------------------------------
-       Tiempo = FuenteEstadisticas.render("Tiempo = ", True, blanco)
-
-       if CambioNivel2 == True:
-          IniciarNivel2()
-          pygame.display.flip()
-       else:
-          FondoAnimadoGrupo.update()
-          FondoAnimadoGrupo.draw(pantalla)
-          DibujoPlataformas.update()
-          DibujoPlataformas.draw(pantalla)
-          DibujoYellowGrunt.update()
-          DibujoYellowGrunt.draw(pantalla)
-          DibujoRedGrunt.update()
-          DibujoRedGrunt.draw(pantalla)
-          DibujoElite.update()
-          DibujoElite.draw(pantalla)
-          DibujoVidas.update()
-          DibujoVidas.draw(pantalla)
-          DibujoBalas.update()
-          DibujoBalas.draw(pantalla)
-          DibujoMeta.update()
-          DibujoMeta.draw(pantalla)
-
-       if personaje.rect.right > ANCHO:
-          personaje.rect.right = ANCHO
-       if personaje.rect.left < 0:
-          personaje.rect.left = 0
-
-       ListaSpritesActivos.update()
-       ListaSpritesActivos.draw(pantalla)
-       DisparosGrupo.update()
-       DisparosGrupo.draw(pantalla)
-       DisparosGrupo2.update()
-       DisparosGrupo2.draw(pantalla)
-
-       pantalla.blit(Seleccion,(4,4))
-       pantalla.blit(IconoVidas,(300,4))
-       pantalla.blit(IconoBalas,(530,4))
-
-       pantalla.blit(Puntos,(59,8))
-       pantalla.blit(Vidas,(355,8))
-       pantalla.blit(Balas,(595,8))
-       pantalla.blit(Tiempo,(1130,8))
-
-       if FinGameOver == True or CantidadVidas == 0:
-          personaje.kill()
-          pygame.mixer.music.stop()
-          sounds.GameOver.play(-1)
-          pantalla.blit(FondoGameOver,(320,20))
-          pantalla.blit(Elite,(800,50))
-          pantalla.blit(Halodied,(0,1))
-	  Halo = pygame.image.load('Halo.png').convert_alpha()
-	  pantalla.blit(Halo,(380,600))
-          MovimientoGameOver()
-          pantalla.blit(TextoGameOver,(pos6-20,380))
-          MovimientoPresioneEspacioGameOver()
-          pantalla.blit(TextoPresioneEspacioGameOver,(200,pos15+30))
-          if tecla[pygame.K_RETURN]:
-             sounds.GameOver.stop()
-             pygame.mixer.music.load('Musicafondo.mp3')
-             pygame.mixer.music.play(-1)
-             salir = True
-             python = sys.executable
-             os.execl(python, python, * sys.argv)
-
-       if FinMeta == True:
-          pygame.mixer.music.stop()
-          pantalla.blit(Halo3MC,(500,-30))
-          pantalla.blit(MensajeHalo,(380,630))
-          MovimientoMision1Completa()
-          pantalla.blit(TextoMision1Completa,(pos13,340))
-          MovimientoPresioneEspacioMeta()
-          pantalla.blit(TextoPresioneEspacioMeta,(450,pos14))
-          if tecla[pygame.K_RETURN]:
-             sounds.Meta.stop()
-             pygame.mixer.music.load('Musicafondo.mp3')
-             pygame.mixer.music.play(-1)
-             EliminarDisparo = False
-             CambioNivel2 = True
-             Puntaje += 1000
-             CantidadVidas += 5
-             CantidadBalas += 10
-             personaje.rect.y = BASE_PERSONAJE + 100
-             FinMeta = False
-
-       if disparoenemigo == True:
-          DisparosGrupo.add(DisparoDerechaEnemy(personaje.rect.right-10, personaje.rect.y+40))
-
-       TiempoJuego()
-       cadena=ConcatenacionTiempo(deceMin,unidMin,deceSeg,unidSeg,centSeg)
-       textoTiempo.render(pantalla, cadena, blanco, (1235, 8))
-       pygame.display.update()    
+        Tiempo = FuenteEstadisticas.render("Tiempo = ", True, blanco)
+        
+        
+        if CambioNivel2 == True:
+            IniciarNivel2()
+            pygame.display.flip()
+        else:
+            FondoAnimadoGrupo.update()
+            FondoAnimadoGrupo.draw(pantalla)
+            DibujoPlataformas.update()
+            DibujoPlataformas.draw(pantalla)
+            DibujoYellowGrunt.update()
+            DibujoYellowGrunt.draw(pantalla)
+            DibujoRedGrunt.update()
+            DibujoRedGrunt.draw(pantalla)
+            DibujoElite.update()
+            DibujoElite.draw(pantalla)
+            DibujoVidas.update()
+            DibujoVidas.draw(pantalla)
+            DibujoBalas.update()
+            DibujoBalas.draw(pantalla)
+            DibujoMeta.update()
+            DibujoMeta.draw(pantalla)
+        
+        if personaje.rect.right > ANCHO:
+            personaje.rect.right = ANCHO
+        if personaje.rect.left < 0:
+            personaje.rect.left = 0
+            
+        ListaSpritesActivos.update()
+        ListaSpritesActivos.draw(pantalla)
+        DisparosGrupo.update()
+        DisparosGrupo.draw(pantalla)
+        DisparosGrupo2.update()
+        DisparosGrupo2.draw(pantalla)
+            
+        pantalla.blit(Seleccion,(4,4))
+        pantalla.blit(IconoVidas,(300,4))
+        pantalla.blit(IconoBalas,(530,4))
+            
+        pantalla.blit(Puntos,(59,8))
+        pantalla.blit(Vidas,(355,8))
+        pantalla.blit(Balas,(595,8))
+        pantalla.blit(Tiempo,(1130,8))
+        
+        if FinGameOver == True or CantidadVidas == 0:
+            personaje.kill()
+            pygame.mixer.music.stop()
+            sounds.GameOver.play(-1)
+            pantalla.blit(FondoGameOver,(320,20))
+            pantalla.blit(Elite,(800,50))
+            pantalla.blit(Halodied,(0,1))
+            Halo = pygame.image.load('Halo.png').convert_alpha()
+            pantalla.blit(Halo,(380,600))
+            MovimientoGameOver()
+            pantalla.blit(TextoGameOver,(pos6-20,380))
+            MovimientoPresioneEspacioGameOver()
+            pantalla.blit(TextoPresioneEspacioGameOver,(200,pos15+30))
+            if tecla[pygame.K_RETURN]:
+                sounds.GameOver.stop()
+                pygame.mixer.music.load('Musicafondo.mp3')
+                pygame.mixer.music.play(-1)
+                salir = True
+                python = sys.executable
+                os.execl(python, python, * sys.argv)
+            
+        if FinMeta == True:
+            pygame.mixer.music.stop()
+            pantalla.blit(Halo3MC,(500,-30))
+            pantalla.blit(MensajeHalo,(380,630))
+            MovimientoMision1Completa()
+            pantalla.blit(TextoMision1Completa,(pos13,340))
+            MovimientoPresioneEspacioMeta()
+            pantalla.blit(TextoPresioneEspacioMeta,(450,pos14))
+            if tecla[pygame.K_RETURN]:
+                sounds.Meta.stop()
+                pygame.mixer.music.load('Musicafondo.mp3')
+                pygame.mixer.music.play(-1)
+                EliminarDisparo = False
+                CambioNivel2 = True
+                Puntaje += 1000
+                CantidadVidas += 5
+                CantidadBalas += 10
+                personaje.rect.y = BASE_PERSONAJE + 100
+                FinMeta = False
+                
+        if disparoenemigo == True:
+            DisparosGrupo.add(DisparoDerechaEnemy(personaje.rect.right-10, personaje.rect.y+40))
+    
+    TiempoJuego()
+    cadena=ConcatenacionTiempo(deceMin,unidMin,deceSeg,unidSeg,centSeg)
+    textoTiempo.render(pantalla, cadena, blanco, (1235, 8))
+    pygame.display.update()    
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #fin nivel 1--init nivel 2
 #------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2502,421 +2498,416 @@ def IniciarNivel2():
     global event, movimiento2, FondoDerecha2, EliminarDisparo, MenuPausaY, DimensionMenuPausa, Puntaje
     global centSeg, unidSeg, deceSeg, unidMin, deceMin, PausaTiempo, CambioNivel2, CantidadVidas, CantidadBalas
     while salir != True: 
-       reloj.tick(60) 
-       tecla = pygame.key.get_pressed()
-       for event in pygame.event.get():   
-           if event.type == pygame.QUIT:
-              salir = True
-           if tecla[pygame.K_s]:
-              sys.exit()
-           if tecla[pygame.K_SPACE]:
+        reloj.tick(60) 
+        tecla = pygame.key.get_pressed()
+        for event in pygame.event.get():   
+            if event.type == pygame.QUIT:
+                salir = True
+            if tecla[pygame.K_s]:
+                sys.exit()
+            if tecla[pygame.K_SPACE]:
                 print "Disparar"
                 personaje2.cual = 2
                 movimiento2 = False
                 if CantidadBalas == 0 or CantidadVidas == 0 or FinMeta == True:
-                   CantidadBalas = CantidadBalas
+                    CantidadBalas = CantidadBalas
                 else:
-                   sounds.Halo_headgun.play()
-                   CantidadBalas -= 1
-                   if personaje2.izquierda == True:
-                      DisparosGrupo.add(DisparoIzquierda(personaje2.rect.left-10, personaje2.rect.y+40))
-                   if personaje2.izquierda == False:
-                      DisparosGrupo.add(DisparoDerecha(personaje2.rect.right-10, personaje2.rect.y+40))
+                    sounds.Halo_headgun.play()
+                    CantidadBalas -= 1
+                    if personaje2.izquierda == True:
+                        DisparosGrupo.add(DisparoIzquierda(personaje2.rect.left-10, personaje2.rect.y+40))
+                    if personaje2.izquierda == False:
+                        DisparosGrupo.add(DisparoDerecha(personaje2.rect.right-10, personaje2.rect.y+40))
 #------------------------------------------------------------------------------------------------------------------------------------------------   
-       if event.type == pygame.KEYDOWN:
-
-          if tecla[pygame.K_RIGHT]:
-             personaje2.izquierda = False
-             FondoDerecha2 = True
-             if CantidadVidas == 0 or FinMeta == True:
-                movimiento2 = False
-             else:
-                if pygame.time.get_ticks()-personaje2.tiempo > personaje2.cuanto:
-                   personaje2.tiempo = pygame.time.get_ticks()
-                   personaje2.cual +=1
-                if personaje2.rect.x >= 680:
-                   movimiento2 = True
-                   personaje2.cambio_x = 0
-                if personaje2.rect.x < 680:    
-                   movimiento2 = False
-                   personaje2.AvanzarDerecha()
-
-          if tecla[pygame.K_LEFT]:
-             personaje2.izquierda = True
-             FondoDerecha2 = False
-             if CantidadVidas == 0 or FinMeta == True:
-                movimiento2 = False
-             else:
-                if pygame.time.get_ticks()-personaje2.tiempo > personaje2.cuanto:
-                   personaje2.tiempo = pygame.time.get_ticks()
-                   personaje2.cual +=1
-                if personaje2.rect.x <= 680:
-                   movimiento2 = True
-                   personaje2.cambio_x = 0
-                if personaje2.rect.x > 680:    
-                   movimiento2 = False
-                   personaje2.AvanzarIzquierda()
-  
-          if tecla[pygame.K_UP]:
-             sounds.Salto.play()
-             personaje2.Saltar()
-             personaje2.cual = 1
-
-          if tecla[pygame.K_DOWN]:
-             personaje2.Agacharse()
-             personaje2.cual = 0
+        if event.type == pygame.KEYDOWN:
+            if tecla[pygame.K_RIGHT]:
+                personaje2.izquierda = False
+                FondoDerecha2 = True
+                if CantidadVidas == 0 or FinMeta == True:
+                    movimiento2 = False
+                else:
+                    if pygame.time.get_ticks()-personaje2.tiempo > personaje2.cuanto:
+                        personaje2.tiempo = pygame.time.get_ticks()
+                        personaje2.cual +=1
+                    if personaje2.rect.x >= 680:
+                        movimiento2 = True
+                        personaje2.cambio_x = 0
+                    if personaje2.rect.x < 680:    
+                        movimiento2 = False
+                        personaje2.AvanzarDerecha()
+            if tecla[pygame.K_LEFT]:
+                personaje2.izquierda = True
+                FondoDerecha2 = False
+                if CantidadVidas == 0 or FinMeta == True:
+                    movimiento2 = False
+                else:
+                    if pygame.time.get_ticks()-personaje2.tiempo > personaje2.cuanto:
+                        personaje2.tiempo = pygame.time.get_ticks()
+                        personaje2.cual +=1
+                    if personaje2.rect.x <= 680:
+                        movimiento2 = True
+                        personaje2.cambio_x = 0
+                    if personaje2.rect.x > 680:    
+                        movimiento2 = False
+                        personaje2.AvanzarIzquierda()
+            if tecla[pygame.K_UP]:
+                sounds.Salto.play()
+                personaje2.Saltar()
+                personaje2.cual = 1
+            if tecla[pygame.K_DOWN]:
+                personaje2.Agacharse()
+                personaje2.cual = 0
 #------------------------------------------------------------------------------------------------------------------------------------------------
-          if tecla[pygame.K_ESCAPE]:
-             if FinMeta == True or FinGameOver == True:
-                Pausa = False
-             else:
-                Pausa = True
-                OpcionMenuPausa = 1
-                pygame.mixer.music.pause()
-                sounds.Pausa.play(-1)
-                while Pausa:
-                   reloj.tick(60) 
-                   tecla = pygame.key.get_pressed()
-                   for event in pygame.event.get():
-                      if event.type == pygame.QUIT:
-                         pygame.quit()
-                      if tecla[pygame.K_UP] and OpcionMenuPausa > 1 and MenuPausaY > DimensionMenuPausa[1]:
-                         OpcionMenuPausa -= 1
-                         MenuPausaY = MenuPausaY-40
-                      if tecla[pygame.K_DOWN] and OpcionMenuPausa < 3 and MenuPausaY > DimensionMenuPausa[0]:
-                         OpcionMenuPausa += 1
-                         MenuPausaY = MenuPausaY+40
-                      if tecla[K_RETURN]:
-	                 if OpcionMenuPausa == 1:
-	                    print "REANUDAR JUEGO"
-                            sounds.Pausa.stop()
-                            sounds.EnterMenu.play()
-                            Pausa = False
-                            pygame.mixer.music.unpause()
-	                 if OpcionMenuPausa == 2:
-                            print "VOLVER AL MENU PRINCIPAL"
-                            sounds.Pausa.stop()
-                            sounds.EnterMenu.play()
-                            Pausa = False
-	                    salir = True
-                            python = sys.executable
-                            os.execl(python, python, * sys.argv)
-                            pygame.mixer.music.load('Musicafondo.mp3')
-                            pygame.mixer.music.play(-1)
-                            Menu(opcion)
-	                 if OpcionMenuPausa == 3:
-                            sounds.EnterMenu.play()
-                            sys.exit()
-                   MenuPausa(OpcionMenuPausa)
-                   pygame.display.update()
+            if tecla[pygame.K_ESCAPE]:
+                if FinMeta == True or FinGameOver == True:
+                    Pausa = False
+                else:
+                    Pausa = True
+                    OpcionMenuPausa = 1
+                    pygame.mixer.music.pause()
+                    sounds.Pausa.play(-1)
+                    while Pausa:
+                        reloj.tick(60) 
+                        tecla = pygame.key.get_pressed()
+                        for event in pygame.event.get():
+                            if event.type == pygame.QUIT:
+                                pygame.quit()
+                            if tecla[pygame.K_UP] and OpcionMenuPausa > 1 and MenuPausaY > DimensionMenuPausa[1]:
+                                OpcionMenuPausa -= 1
+                                MenuPausaY = MenuPausaY-40
+                            if tecla[pygame.K_DOWN] and OpcionMenuPausa < 3 and MenuPausaY > DimensionMenuPausa[0]:
+                                OpcionMenuPausa += 1
+                                MenuPausaY = MenuPausaY+40
+                            if tecla[K_RETURN]:
+                                if OpcionMenuPausa == 1:
+                                    print "REANUDAR JUEGO"
+                                    sounds.Pausa.stop()
+                                    sounds.EnterMenu.play()
+                                    Pausa = False
+                                    pygame.mixer.music.unpause()
+                                if OpcionMenuPausa == 2:
+                                    print "VOLVER AL MENU PRINCIPAL"
+                                    sounds.Pausa.stop()
+                                    sounds.EnterMenu.play()
+                                    Pausa = False
+                                    salir = True
+                                    python = sys.executable
+                                    os.execl(python, python, * sys.argv)
+                                    pygame.mixer.music.load('Musicafondo.mp3')
+                                    pygame.mixer.music.play(-1)
+                                    Menu(opcion)
+                                if OpcionMenuPausa == 3:
+                                    sounds.EnterMenu.play()
+                                    sys.exit()
+                            MenuPausa(OpcionMenuPausa)
+                            pygame.display.update()
 #------------------------------------------------------------------------------------------------------------------------------------------------                   
-       if event.type == pygame.KEYUP:
-          personaje2.cual = 3
+        if event.type == pygame.KEYUP:
+            personaje2.cual = 3
+            if tecla[pygame.K_SPACE]:
+                personaje2.cual = 2
+            if tecla[pygame.K_RIGHT]:
+                personaje2.Detenerse()
+                movimiento2 = False
+            if tecla[pygame.K_LEFT]:
+                personaje2.Detenerse()
+                movimiento2 = False
+#------------------------------------------------------------------------------------------------------------------------------------------------
+        Puntos = FuenteEstadisticas.render("Puntaje = " + str(Puntaje), True, blanco)
 
-          if tecla[pygame.K_SPACE]:
-             personaje2.cual = 2
-
-          if tecla[pygame.K_RIGHT]:
-             personaje2.Detenerse()
-             movimiento2 = False
-
-          if tecla[pygame.K_LEFT]:
-             personaje2.Detenerse()
-             movimiento2 = False
+        ColisionBalasYellowGrunt2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionyellowgrunt2.ListaYellowGrunt2, True, True)
+        for yellowgrunt in ColisionBalasYellowGrunt2:
+            print "+100 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            yellowgrunt.kill()
+            Puntaje += 100
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       Puntos = FuenteEstadisticas.render("Puntaje = " + str(Puntaje), True, blanco)
-
-       ColisionBalasYellowGrunt2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionyellowgrunt2.ListaYellowGrunt2, True, True)
-       for yellowgrunt in ColisionBalasYellowGrunt2:
-          print "+100 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          yellowgrunt.kill()
-          Puntaje += 100
+        ColisionBalasRedGrunt2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionredgrunt2.ListaRedGrunt2, True, True)
+        for redgrunt in ColisionBalasRedGrunt2:
+            print "+100 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            redgrunt.kill()
+            Puntaje += 100
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasRedGrunt2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionredgrunt2.ListaRedGrunt2, True, True)
-       for redgrunt in ColisionBalasRedGrunt2:
-          print "+100 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          redgrunt.kill()
-          Puntaje += 100
+        ColisionBalasElite2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionelite2.ListaElite2, True, True)
+        for elite in ColisionBalasElite2:
+            print "+300 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            elite.kill()
+            Puntaje += 300
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasElite2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionelite2.ListaElite2, True, True)
-       for elite in ColisionBalasElite2:
-          print "+300 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          elite.kill()
-          Puntaje += 300
+        ColisionBalasJackal = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionjackal.ListaJackalMayor, True, True)
+        for jackal in ColisionBalasJackal:
+            print "+300 Puntos jackal"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            jackal.kill()
+            Puntaje += 300
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasJackal = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionjackal.ListaJackalMayor, True, True)
-       for jackal in ColisionBalasJackal:
-          print "+300 Puntos jackal"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          jackal.kill()
-          Puntaje += 300
-#------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasHunter = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionhunter.ListaHunter, True, True)
-       for hunter in ColisionBalasHunter:
-          print "+500 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          hunter.kill()
-          Puntaje += 500
+        ColisionBalasHunter = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionhunter.ListaHunter, True, True)
+        for hunter in ColisionBalasHunter:
+            print "+500 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            hunter.kill()
+            Puntaje += 500
 #-----------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasBrute = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionbrute.ListaBrute, True, True)
-       for brute in ColisionBalasBrute:
-          print "+700 Puntos"
-          sounds.Salto.stop()
-          sounds.Destruido.play()
-          brute.kill()
-          CantidadBalas += 2
-          CantidadVidas += 2
-          Puntaje += 700
+        ColisionBalasBrute = pygame.sprite.groupcollide(DisparosGrupo, personaje2.posicionbrute.ListaBrute, True, True)
+        for brute in ColisionBalasBrute:
+            print "+700 Puntos"
+            sounds.Salto.stop()
+            sounds.Destruido.play()
+            brute.kill()
+            CantidadBalas += 2
+            CantidadVidas += 2
+            Puntaje += 700
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionBalasPlataforma2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.nivel2.ListaPlataformas2, True, False)
-       for plataforma in ColisionBalasPlataforma2:
-          sounds.Salto.stop()
+        ColisionBalasPlataforma2 = pygame.sprite.groupcollide(DisparosGrupo, personaje2.nivel2.ListaPlataformas2, True, False)
+        for plataforma in ColisionBalasPlataforma2:
+            sounds.Salto.stop()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       Vidas = FuenteEstadisticas.render("Vidas = " + str(CantidadVidas), True, blanco)
+        Vidas = FuenteEstadisticas.render("Vidas = " + str(CantidadVidas), True, blanco)
 
-       ColisionModificableVidas = pygame.sprite.spritecollide(personaje2, personaje2.posicionvida2.ListaVidas2, False)
-       for vida in ColisionModificableVidas:
-          print "+3 Vida"
-          sounds.Salto.stop()
-          sounds.MasVida.play()
-          vida.kill()
-          CantidadVidas += 4
+        ColisionModificableVidas = pygame.sprite.spritecollide(personaje2, personaje2.posicionvida2.ListaVidas2, False)
+        for vida in ColisionModificableVidas:
+            print "+3 Vida"
+            sounds.Salto.stop()
+            sounds.MasVida.play()
+            vida.kill()
+            CantidadVidas += 4
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeYellowGrunt2 = pygame.sprite.spritecollide(personaje2, personaje2.posicionyellowgrunt2.ListaYellowGrunt2, False)
-       for yellowgrunt in ColisionPersonajeYellowGrunt2:
-          print "-1 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-          if CantidadVidas == 0:
-             CantidadVidas = 0
-             print "GAME OVER"
-             FinGameOver = True
-             yellowgrunt.kill()
-             personaje2.kill()
-             EliminarDisparo = True
-             PausaTiempo = True
-             sounds.GameOver.play(-1)
-          else:
-             CantidadVidas -= 1
-             yellowgrunt.kill()
+        ColisionPersonajeYellowGrunt2 = pygame.sprite.spritecollide(personaje2, personaje2.posicionyellowgrunt2.ListaYellowGrunt2, False)
+        for yellowgrunt in ColisionPersonajeYellowGrunt2:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas == 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                yellowgrunt.kill()
+                personaje2.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 1
+                yellowgrunt.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeRedGrunt2 = pygame.sprite.spritecollide(personaje2, personaje2.posicionredgrunt2.ListaRedGrunt2, False)
-       for redgrunt in ColisionPersonajeRedGrunt2:
-          print "-1 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-          if CantidadVidas == 0:
-             CantidadVidas = 0
-             print "GAME OVER"
-             (x, y) = redgrunt.rect.center
-             ListaSpritesActivos.add(Explocion(x, y))
-             FinGameOver = True
-             redgrunt.kill()
-             personaje2.kill()
-             EliminarDisparo = True
-             PausaTiempo = True
-             sounds.GameOver.play(-1)
-          else:
-             (x, y) = redgrunt.rect.center
-             ListaSpritesActivos.add(Explocion(x, y))
-             CantidadVidas -= 1
-             redgrunt.kill()
+        ColisionPersonajeRedGrunt2 = pygame.sprite.spritecollide(personaje2, personaje2.posicionredgrunt2.ListaRedGrunt2, False)
+        for redgrunt in ColisionPersonajeRedGrunt2:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas == 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                (x, y) = redgrunt.rect.center
+                ListaSpritesActivos.add(Explocion(x, y))
+                FinGameOver = True
+                redgrunt.kill()
+                personaje2.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                (x, y) = redgrunt.rect.center
+                ListaSpritesActivos.add(Explocion(x, y))
+                CantidadVidas -= 1
+                redgrunt.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeElite2 = pygame.sprite.spritecollide(personaje2, personaje2.posicionelite2.ListaElite2, False)
-       for elite in ColisionPersonajeElite2:
-          print "-1 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-          if CantidadVidas -2 <= 0:
-             CantidadVidas = 0
-             print "GAME OVER"
-             FinGameOver = True
-             elite.kill()
-             personaje2.kill()
-             EliminarDisparo = True
-             PausaTiempo = True
-             sounds.GameOver.play(-1)
-          else:
-             CantidadVidas -= 2
-             elite.kill()
+        ColisionPersonajeElite2 = pygame.sprite.spritecollide(personaje2, personaje2.posicionelite2.ListaElite2, False)
+        for elite in ColisionPersonajeElite2:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas -2 <= 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                elite.kill()
+                personaje2.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 2
+                elite.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeHunter = pygame.sprite.spritecollide(personaje2, personaje2.posicionhunter.ListaHunter, False)
-       for hunter in ColisionPersonajeHunter:
-           print "-3 Vida"
-           sounds.Salto.stop()
-           sounds.death.play()
-           if CantidadVidas-3 <= 0:
-              CantidadVidas = 0
-              print "GAME OVER"
-              FinGameOver = True
-              hunter.kill()
-              personaje2.kill()
-              EliminarDisparo = True
-              PausaTiempo = True
-              sounds.GameOver.play(-1)
-           else:
-              CantidadVidas -= 3
-              hunter.kill()
+        ColisionPersonajeHunter = pygame.sprite.spritecollide(personaje2, personaje2.posicionhunter.ListaHunter, False)
+        for hunter in ColisionPersonajeHunter:
+            print "-3 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas-3 <= 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                hunter.kill()
+                personaje2.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 3
+                hunter.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeJackalMayor = pygame.sprite.spritecollide(personaje2, personaje2.posicionjackal.ListaJackalMayor, False)
-       for jackal in ColisionPersonajeJackalMayor:
-           print "-1 Vida"
-           sounds.Salto.stop()
-           sounds.death.play()
-           if CantidadVidas == 0:
-              CantidadVidas = 0
-              print "GAME OVER"
-              FinGameOver = True
-              jackal.kill()
-              personaje2.kill()
-              EliminarDisparo = True
-              PausaTiempo = True
-              sounds.GameOver.play(-1)
-           else:
-              CantidadVidas -= 1
-              jackal.kill()
+        ColisionPersonajeJackalMayor = pygame.sprite.spritecollide(personaje2, personaje2.posicionjackal.ListaJackalMayor, False)
+        for jackal in ColisionPersonajeJackalMayor:
+            print "-1 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas == 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                jackal.kill()
+                personaje2.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 1
+                jackal.kill()
 #--------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionPersonajeBrute = pygame.sprite.spritecollide(personaje2, personaje2.posicionbrute.ListaBrute, False)
-       for brute in ColisionPersonajeBrute:
-           print "-4 Vida"
-           sounds.Salto.stop()
-           sounds.death.play()
-           if CantidadVidas-4 <= 0:
-              CantidadVidas = 0
-              print "GAME OVER"
-              FinGameOver = True
-              brute.kill()
-              personaje2.kill()
-              EliminarDisparo = True
-              PausaTiempo = True
-              sounds.GameOver.play(-1)
-           else:
-              CantidadVidas -= 4
-              brute.kill()
+        ColisionPersonajeBrute = pygame.sprite.spritecollide(personaje2, personaje2.posicionbrute.ListaBrute, False)
+        for brute in ColisionPersonajeBrute:
+            print "-4 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            if CantidadVidas-4 <= 0:
+                CantidadVidas = 0
+                print "GAME OVER"
+                FinGameOver = True
+                brute.kill()
+                personaje2.kill()
+                EliminarDisparo = True
+                PausaTiempo = True
+                sounds.GameOver.play(-1)
+            else:
+                CantidadVidas -= 4
+                brute.kill()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       Balas = FuenteEstadisticas.render("Balas = " + str(CantidadBalas), True, blanco)
-       ColisionModificableBalas = pygame.sprite.spritecollide(personaje2, personaje2.posicionbala.ListaBalas, False)
-       for bala in ColisionModificableBalas:
-          print "+6 Balas"
-          sounds.Salto.stop()
-          sounds.MasBala.play()
-          bala.kill()
-          CantidadBalas += 6
+        Balas = FuenteEstadisticas.render("Balas = " + str(CantidadBalas), True, blanco)
+        ColisionModificableBalas = pygame.sprite.spritecollide(personaje2, personaje2.posicionbala.ListaBalas, False)
+        for bala in ColisionModificableBalas:
+            print "+6 Balas"
+            sounds.Salto.stop()
+            sounds.MasBala.play()
+            bala.kill()
+            CantidadBalas += 6
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionMeta = pygame.sprite.spritecollide(personaje2, personaje2.posicionmeta.ListaMeta, False)
-       for meta in ColisionMeta:
-          print "META, FIN DEL JUEGO"
-          FinMeta = True
-          personaje2.kill()
-          EliminarDisparo = True
-          PausaTiempo = True
-          sounds.Meta.play()
+        ColisionMeta = pygame.sprite.spritecollide(personaje2, personaje2.posicionmeta.ListaMeta, False)
+        for meta in ColisionMeta:
+            print "META, FIN DEL JUEGO"
+            FinMeta = True
+            personaje2.kill()
+            EliminarDisparo = True
+            PausaTiempo = True
+            sounds.Meta.play()
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       ColisionLlama = pygame.sprite.spritecollide(personaje2, personaje2.Llamas2.ListaLlamas,False)
-       for vacio in ColisionLlama:
-          print "+3 Vida"
-          sounds.Salto.stop()
-          sounds.death.play()
-	  vacio.kill()
-          CantidadVidas -= 1
+        ColisionLlama = pygame.sprite.spritecollide(personaje2, personaje2.Llamas2.ListaLlamas,False)
+        for vacio in ColisionLlama:
+            print "+3 Vida"
+            sounds.Salto.stop()
+            sounds.death.play()
+            vacio.kill()
+            CantidadVidas -= 1
 #------------------------------------------------------------------------------------------------------------------------------------------------
-       Tiempo = FuenteEstadisticas.render("Tiempo = ", True, blanco)
+        Tiempo = FuenteEstadisticas.render("Tiempo = ", True, blanco)
 
 
-       FondoAnimadoGrupo2.update()
-       FondoAnimadoGrupo2.draw(pantalla)
-       ListaSpritesActivos.add(personaje2)
-       DibujoPlataformas2.update()
-       DibujoPlataformas2.draw(pantalla)
-       DibujoPlataformasLlamas.update()
-       DibujoPlataformasLlamas.draw(pantalla)
-       DibujoYellowGrunt2.update()
-       DibujoYellowGrunt2.draw(pantalla)
-       DibujoRedGrunt2.update()
-       DibujoRedGrunt2.draw(pantalla)
-       DibujoElite2.update()
-       DibujoElite2.draw(pantalla)
-       DibujoJackalMayor.update()
-       DibujoJackalMayor.draw(pantalla)
-       DibujoBrute.update()
-       DibujoBrute.draw(pantalla)
-       DibujoHunter.update()
-       DibujoHunter.draw(pantalla)
-       DibujoVidas2.update()
-       DibujoVidas2.draw(pantalla)
-       DibujoBalas.update()
-       DibujoBalas.draw(pantalla)
-       DibujoMeta.update()
-       DibujoMeta.draw(pantalla)
+        FondoAnimadoGrupo2.update()
+        FondoAnimadoGrupo2.draw(pantalla)
+        ListaSpritesActivos.add(personaje2)
+        DibujoPlataformas2.update()
+        DibujoPlataformas2.draw(pantalla)
+        DibujoPlataformasLlamas.update()
+        DibujoPlataformasLlamas.draw(pantalla)
+        DibujoYellowGrunt2.update()
+        DibujoYellowGrunt2.draw(pantalla)
+        DibujoRedGrunt2.update()
+        DibujoRedGrunt2.draw(pantalla)
+        DibujoElite2.update()
+        DibujoElite2.draw(pantalla)
+        DibujoJackalMayor.update()
+        DibujoJackalMayor.draw(pantalla)
+        DibujoBrute.update()
+        DibujoBrute.draw(pantalla)
+        DibujoHunter.update()
+        DibujoHunter.draw(pantalla)
+        DibujoVidas2.update()
+        DibujoVidas2.draw(pantalla)
+        DibujoBalas.update()
+        DibujoBalas.draw(pantalla)
+        DibujoMeta.update()
+        DibujoMeta.draw(pantalla)
+        
+        if personaje2.rect.right > ANCHO:
+            personaje2.rect.right = ANCHO
+        if personaje2.rect.left < 0:
+            personaje2.rect.left = 0
 
-       if personaje2.rect.right > ANCHO:
-          personaje2.rect.right = ANCHO
-       if personaje2.rect.left < 0:
-          personaje2.rect.left = 0
-
-       ListaSpritesActivos.update()
-       ListaSpritesActivos.draw(pantalla)
-       DisparosGrupo.update()
-       DisparosGrupo.draw(pantalla)
-
-       pantalla.blit(Seleccion,(4,4))
-       pantalla.blit(IconoVidas,(300,4))
-       pantalla.blit(IconoBalas,(530,4))
-
-       pantalla.blit(Puntos,(59,8))
-       pantalla.blit(Vidas,(355,8))
-       pantalla.blit(Balas,(595,8))
-       pantalla.blit(Tiempo,(1130,8))
-
-       if FinGameOver == True or CantidadVidas == 0:
-          personaje2.kill()
-          pygame.mixer.music.stop()
-          sounds.GameOver.play(-1)
-          pantalla.blit(FondoGameOver,(320,20))
-          pantalla.blit(Elite,(800,50))
-          pantalla.blit(Halodied,(0,1))
-	  Halo = pygame.image.load('Halo.png').convert_alpha()
-	  pantalla.blit(Halo,(380,600))
-          MovimientoGameOver()
-          pantalla.blit(TextoGameOver,(pos6-20,380))
-          MovimientoPresioneEspacioGameOver()
-          pantalla.blit(TextoPresioneEspacioGameOver,(200,pos15+30))
-          if tecla[pygame.K_RETURN] or tecla[pygame.K_ESCAPE]:
-             sounds.GameOver.stop()
-             pygame.mixer.music.load('Musicafondo.mp3')
-             pygame.mixer.music.play(-1)
+        ListaSpritesActivos.update()
+        ListaSpritesActivos.draw(pantalla)
+        DisparosGrupo.update()
+        DisparosGrupo.draw(pantalla)
+        
+        pantalla.blit(Seleccion,(4,4))
+        pantalla.blit(IconoVidas,(300,4))
+        pantalla.blit(IconoBalas,(530,4))
+        
+        pantalla.blit(Puntos,(59,8))
+        pantalla.blit(Vidas,(355,8))
+        pantalla.blit(Balas,(595,8))
+        pantalla.blit(Tiempo,(1130,8))
+        
+        if FinGameOver == True or CantidadVidas == 0:
+            personaje2.kill()
+            pygame.mixer.music.stop()
+            sounds.GameOver.play(-1)
+            pantalla.blit(FondoGameOver,(320,20))
+            pantalla.blit(Elite,(800,50))
+            pantalla.blit(Halodied,(0,1))
+        
+            Halo = pygame.image.load('Halo.png').convert_alpha()
+            pantalla.blit(Halo,(380,600))
+            MovimientoGameOver()
+            pantalla.blit(TextoGameOver,(pos6-20,380))
+            MovimientoPresioneEspacioGameOver()
+            pantalla.blit(TextoPresioneEspacioGameOver,(200,pos15+30))
+            if tecla[pygame.K_RETURN] or tecla[pygame.K_ESCAPE]:
+                sounds.GameOver.stop()
+                pygame.mixer.music.load('Musicafondo.mp3')
+                pygame.mixer.music.play(-1)
 #             FinGameOver = False
 #             CambioNivel = False
 #             salir = True
-             python = sys.executable
-             os.execl(python, python, * sys.argv)
+            python = sys.executable
+            os.execl(python, python, * sys.argv)
 
 
-       if FinMeta == True:
-          pygame.mixer.music.stop()
-          pantalla.blit(FondoMensajeMeta,(150,250))
-          pantalla.blit(Halo3MC,(380,-20))
-          MovimientoMision1Completa()
-          pantalla.blit(TextoMision1Completa,(200,340))
-          MovimientoPresioneEspacioMeta()
-          pantalla.blit(TextoPresioneEspacioMeta,(350,500))
-          if tecla[pygame.K_RETURN]:
-             sounds.Meta.stop()
-             pygame.mixer.music.load('Musicafondo.mp3')
-             pygame.mixer.music.play(-1)
-             sys.exit()
-       TiempoJuego()
-       cadena=ConcatenacionTiempo(deceMin,unidMin,deceSeg,unidSeg,centSeg)
-       textoTiempo.render(pantalla, cadena, blanco, (1235, 8))
-       pygame.display.update()    
+        if FinMeta == True:
+            pygame.mixer.music.stop()
+            pantalla.blit(FondoMensajeMeta,(150,250))
+            pantalla.blit(Halo3MC,(380,-20))
+            MovimientoMision1Completa()
+            pantalla.blit(TextoMision1Completa,(200,340))
+            MovimientoPresioneEspacioMeta()
+            pantalla.blit(TextoPresioneEspacioMeta,(350,500))
+            if tecla[pygame.K_RETURN]:
+                sounds.Meta.stop()
+                pygame.mixer.music.load('Musicafondo.mp3')
+                pygame.mixer.music.play(-1)
+                sys.exit()
+                
+        TiempoJuego()
+        cadena=ConcatenacionTiempo(deceMin,unidMin,deceSeg,unidSeg,centSeg)
+        textoTiempo.render(pantalla, cadena, blanco, (1235, 8))
+        pygame.display.update()    
 #------------------------------------------------------------------------------------------------------------------------------------------------
 def Instrucciones():
     salir = False
@@ -2939,14 +2930,14 @@ def Instrucciones():
     pantalla.blit(Halo,(350,10))
 
     while salir != True:
-       tecla = pygame.key.get_pressed()   
-       for event in pygame.event.get():
-          if event.type == pygame.QUIT:
-             salir = True
-          if tecla[pygame.K_ESCAPE]:
-             print "REGRESAR AL MENU"
-             salir = True
-       pygame.display.flip()
+        tecla = pygame.key.get_pressed()   
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                salir = True
+            if tecla[pygame.K_ESCAPE]:
+                print "REGRESAR AL MENU"
+                salir = True
+        pygame.display.flip()
 #------------------------------------------------------------------------------------------------------------------------------------------------
 def Creditos():
     salir = False
@@ -2956,28 +2947,28 @@ def Creditos():
     Computador = pygame.image.load('Computador.png').convert_alpha()
     fuente = pygame.font.Font('Halo3.ttf', 70)
     fuente3 = pygame.font.Font('Halo3.ttf', 30)
-    Nombre1 = fuente3.render("David Beltran Coy", 1, (azul))
-    Nombre2 = fuente3.render("Oscar Miticanoy", 1, (azul))
+    Nombre1 = fuente3.render("Juan Camilo Pelaez Martinez", 1, (azul))
+    Nombre2 = fuente3.render("Sebastian Londono Marin", 1, (azul))
     while salir != True:
-       reloj.tick(60) 
-       tecla = pygame.key.get_pressed()   
-       for event in pygame.event.get():
-          if event.type == pygame.QUIT:
-             salir = True
-          if tecla[pygame.K_ESCAPE]:
-             print "REGRESAR AL MENU"
-             salir = True
-       pantalla.blit(FondoCreditos,(0,0))
-       pantalla.blit(Halo,(350,10))
-       MovimientoLogoUniversidad()
-       pantalla.blit(LogoUniversidad,(pos8,350))
-       MovimientoComputador()
-       pantalla.blit(Computador,(pos8,500))
-       MovimientoNombre1()
-       pantalla.blit(Nombre1,(500,pos11))
-       MovimientoNombre2()
-       pantalla.blit(Nombre2,(500,pos12))
-       pygame.display.flip()
+        reloj.tick(60) 
+        tecla = pygame.key.get_pressed()   
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                salir = True
+            if tecla[pygame.K_ESCAPE]:
+                print "REGRESAR AL MENU"
+                salir = True
+        pantalla.blit(FondoCreditos,(0,0))
+        pantalla.blit(Halo,(350,10))
+        MovimientoLogoUniversidad()
+        pantalla.blit(LogoUniversidad,(pos8,350))
+        MovimientoComputador()
+        pantalla.blit(Computador,(pos8,500))
+        MovimientoNombre1()
+        pantalla.blit(Nombre1,(500,pos11))
+        MovimientoNombre2()
+        pantalla.blit(Nombre2,(500,pos12))
+        pygame.display.flip()
 #------------------------------------------------------------------------------------------------------------------------------------------------
 # Menu Inicial
 def Menu(opcion):
@@ -2985,35 +2976,35 @@ def Menu(opcion):
     fuente = pygame.font.Font('Halo3.ttf', 80)
     pantalla.blit(Fondo,(0,0))
     if opcion == 1:
-       IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(azul))
-       Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
-       Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
-       Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
-       Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
+        IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(azul))
+        Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
+        Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
+        Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
+        Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
     if opcion == 2:      
-       IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
-       Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(azul))
-       Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
-       Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
-       Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
+        IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
+        Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(azul))
+        Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
+        Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
+        Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
     if opcion == 3:
-       IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
-       Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
-       Historia,opcion3=TextoMenu("HISTORIA",300,340,(azul))
-       Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
-       Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
+        IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
+        Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
+        Historia,opcion3=TextoMenu("HISTORIA",300,340,(azul))
+        Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
+        Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
     if opcion == 4:
-       IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
-       Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
-       Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
-       Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(azul))
-       Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
+        IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
+        Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
+        Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
+        Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(azul))
+        Salir,opcion5 = TextoMenu("SALIR",300,440,(negro))
     if opcion == 5:
-       IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
-       Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
-       Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
-       Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
-       Salir,opcion5 = TextoMenu("SALIR",300,440,(azul))
+        IniciarJuego,opcion1 = TextoMenu("INICIAR  JUEGO",300,240,(negro))
+        Instrucciones,opcion2 = TextoMenu("INSTRUCCIONES",300,290,(negro))
+        Historia,opcion3=TextoMenu("HISTORIA",300,340,(negro))
+        Creditos,opcion4 = TextoMenu("CREDITOS",300,390,(negro))
+        Salir,opcion5 = TextoMenu("SALIR",300,440,(azul))
     pantalla.blit(IniciarJuego,opcion1)
     pantalla.blit(Instrucciones,opcion2)
     pantalla.blit(Historia,opcion3)
@@ -3041,93 +3032,90 @@ def Historia():
     pantalla.blit(w2,(160,250))
     pantalla.blit(flechaarriba,(1100,550))
     while salir != True:
-       tecla = pygame.key.get_pressed()   
-       for event in pygame.event.get():
-          if tecla[pygame.K_UP]:
-                  pantalla.blit(FondoI,(0,0))
-                  fuente3 = pygame.font.Font('Halo3.ttf', 25)
-                  intro1 = fuente3.render("El Jefe Maestro nacio el 7 de marzo de 2511 y paso la primera parte de su  ", 1, (blanco))
-                  intro2 = fuente3.render("niÃ±ez en el planeta humano Eridanus 2,colonia donde vivio con su familia.",1,(blanco))
-                  intro3 = fuente3.render("John era alto para su edad en ese entonces, media aproximadamente un pie mas " , 1, (blanco))
-                  intro4 = fuente3.render("que sus companeros de la escuela, lo que lo hacÃ­a una muestra genetica " , 1, (blanco))
-                  intro5 = fuente3.render(" perfecta para el proyecto SPARTAN-II Lo describen en la edad de seis  " , 1, (blanco))
-                  intro6 = fuente3.render("aÃ±os como un tÃ­pico muchacho, de pielcaucasica, con pelo marron, pecas y " , 1, (blanco))
-                  intro7 = fuente3.render(" un espacio entre sus dos dientes delanteros." , 1, (blanco))
-                  pantalla.blit(intro1,(160,200))
-                  pantalla.blit(intro2,(160,230))
-                  pantalla.blit(intro3,(160,260))
-                  pantalla.blit(intro4,(160,290))
-                  pantalla.blit(intro5,(160,320))
-                  pantalla.blit(intro6,(160,350))
-                  pantalla.blit(intro7,(160,380))
-                  pantalla.blit(flechaabajo,(1100,550))
-
-          if tecla[pygame.K_DOWN]:
-                  pantalla.blit(FondoII,(0,0))
-                  fuente3 = pygame.font.Font('Halo3.ttf', 25)
-                  p1 = fuente3.render("En 2517, John y otros 74 ninos de su edad, fueron secuestrados  ", 1, (blanco))
-                  p2 = fuente3.render("secretamente de sus hogares y sustituidos por clones flash " ,1,(blanco))
-                  p3 = fuente3.render("(clones que estaban programados para morir en un tiempo " , 1,(blanco))
-                  p4 = fuente3.render("determinado). Esta forma especifica de copia fue empleada  " , 1, (blanco))
-                  p5 = fuente3.render("para asegurarse de que ninguna de las familias se enteraran  " , 1, (blanco))
-                  p6 = fuente3.render("que sus hijos habian sido secuestrados. Sin embargo, los clones " , 1, (blanco))
-		  p7=  fuente3.render("resultaron inestables y todos perecieron poco despues de lo ",1,(blanco))
-		  p8= fuente3.render(" que fue llamado como la falla metabolica en cascada ",1,(blanco))
-                  pantalla.blit(p1,(160,200))
-                  pantalla.blit(p2,(160,230))
-                  pantalla.blit(p3,(160,260))
-                  pantalla.blit(p4,(160,290))
-                  pantalla.blit(p5,(160,320))
-                  pantalla.blit(p6,(160,350))
-	          pantalla.blit(p7,(160,380))
-                  pantalla.blit(p8,(160,410))
-                  pantalla.blit(flechaizquierda,(1100,550))
-
-
-          if tecla[pygame.K_LEFT]:
-                  pantalla.blit(FondoInstrucciones,(0,0))
-                  fuente3 = pygame.font.Font('Halo3.ttf', 25)
-                  p1 = fuente3.render(" lo que hace parecer que el deceso fue por causas naturales.  ", 1, (blanco))
-                  p2 = fuente3.render("La doctora Catherine Halsey,jefa del proyecto SPARTAN-II, ",1,(blanco))
-                  p3 = fuente3.render("comento mÃ¡s adelante que este efecto secundario era " , 1, (blanco))
-                  p4 = fuente3.render("desafortunado, pero la fecha lÃ­mite del proyecto no dejaba " , 1, (blanco))
-                  p5 = fuente3.render("otra alternativa. Los niÃ±os originales fueron llevados al  " , 1, (blanco))
-                  p6 = fuente3.render("planeta Reach, una de las jefaturas del UNSC, para entrenarlos , " , 1, (blanco))
-                  p7 = fuente3.render("y convertirlos en supersoldados clase SPARTAN-II.En Reach, los ",1,(blanco))
-                  p8 = fuente3.render("ninos secuestrados comenzaron el intensivo entrenamiento fisico",1,(blanco))
-                  pantalla.blit(p1,(160,200))
-                  pantalla.blit(p2,(160,230))
-                  pantalla.blit(p3,(160,260))
-                  pantalla.blit(p4,(160,290))
-                  pantalla.blit(p5,(160,320))
-                  pantalla.blit(p6,(160,350))
-                  pantalla.blit(p7,(160,380))
-                  pantalla.blit(p8,(160,410))
-                  pantalla.blit(flechaderecha,(1100,550))
-
-          if tecla[pygame.K_RIGHT]:
-                  pantalla.blit(FondoIII,(0,0))
-                  fuente3 = pygame.font.Font('Halo3.ttf', 25)
-                  p1 = fuente3.render("mental y psicologico como parte del programa Spartan por parte de  ", 1, (blanco))
-                  p2 = fuente3.render("Chief Petty Officer Mendez, asignandoles nuevos nÃºmeros de  ",1,(blanco))
-                  p3 = fuente3.render("identificacion en vez de los nombres pasados." , 1, (blanco))
-                  p4 = fuente3.render("John Fletcher es ahora John-117." , 1, (blanco))
-                  p5 = fuente3.render("Este personaje es el encargado de salvar a la Humanidad de la " , 1,(blanco))
-                  p6 = fuente3.render("invasion de los covenant que se quieren apoderarse de la tierra" , 1,(blanco))
-                  pantalla.blit(p1,(160,200))
-                  pantalla.blit(p2,(160,230))
-                  pantalla.blit(p3,(160,260))
-                  pantalla.blit(p4,(160,290))
-                  pantalla.blit(p5,(160,320))
-                  pantalla.blit(p6,(160,350))
-                  pantalla.blit(esc,(1100,550))
-
-
-
-          if tecla[pygame.K_ESCAPE]:
-             print "REGRESAR AL MENU"
-             salir = True
-       pygame.display.flip()
+        tecla = pygame.key.get_pressed()   
+        for event in pygame.event.get():
+            if tecla[pygame.K_UP]:
+                pantalla.blit(FondoI,(0,0))
+                fuente3 = pygame.font.Font('Halo3.ttf', 25)
+                intro1 = fuente3.render("El Jefe Maestro nacio el 7 de marzo de 2511 y paso la primera parte de su  ", 1, (blanco))
+                intro2 = fuente3.render("niÃ±ez en el planeta humano Eridanus 2,colonia donde vivio con su familia.",1,(blanco))
+                intro3 = fuente3.render("John era alto para su edad en ese entonces, media aproximadamente un pie mas " , 1, (blanco))
+                intro4 = fuente3.render("que sus companeros de la escuela, lo que lo hacÃ­a una muestra genetica " , 1, (blanco))
+                intro5 = fuente3.render(" perfecta para el proyecto SPARTAN-II Lo describen en la edad de seis  " , 1, (blanco))
+                intro6 = fuente3.render("aÃ±os como un tÃ­pico muchacho, de pielcaucasica, con pelo marron, pecas y " , 1, (blanco))
+                intro7 = fuente3.render(" un espacio entre sus dos dientes delanteros." , 1, (blanco))
+                pantalla.blit(intro1,(160,200))
+                pantalla.blit(intro2,(160,230))
+                pantalla.blit(intro3,(160,260))
+                pantalla.blit(intro4,(160,290))
+                pantalla.blit(intro5,(160,320))
+                pantalla.blit(intro6,(160,350))
+                pantalla.blit(intro7,(160,380))
+                pantalla.blit(flechaabajo,(1100,550))
+            
+            if tecla[pygame.K_DOWN]:
+                pantalla.blit(FondoII,(0,0))
+                fuente3 = pygame.font.Font('Halo3.ttf', 25)
+                p1 = fuente3.render("En 2517, John y otros 74 ninos de su edad, fueron secuestrados  ", 1, (blanco))
+                p2 = fuente3.render("secretamente de sus hogares y sustituidos por clones flash " ,1,(blanco))
+                p3 = fuente3.render("(clones que estaban programados para morir en un tiempo " , 1,(blanco))
+                p4 = fuente3.render("determinado). Esta forma especifica de copia fue empleada  " , 1, (blanco))
+                p5 = fuente3.render("para asegurarse de que ninguna de las familias se enteraran  " , 1, (blanco))
+                p6 = fuente3.render("que sus hijos habian sido secuestrados. Sin embargo, los clones " , 1, (blanco))
+                p7=  fuente3.render("resultaron inestables y todos perecieron poco despues de lo ",1,(blanco))
+                p8= fuente3.render(" que fue llamado como la falla metabolica en cascada ",1,(blanco))
+                pantalla.blit(p1,(160,200))
+                pantalla.blit(p2,(160,230))
+                pantalla.blit(p3,(160,260))
+                pantalla.blit(p4,(160,290))
+                pantalla.blit(p5,(160,320))
+                pantalla.blit(p6,(160,350))
+                pantalla.blit(p7,(160,380))
+                pantalla.blit(p8,(160,410))
+                pantalla.blit(flechaizquierda,(1100,550))
+            
+            if tecla[pygame.K_LEFT]:
+                pantalla.blit(FondoInstrucciones,(0,0))
+                fuente3 = pygame.font.Font('Halo3.ttf', 25)
+                p1 = fuente3.render(" lo que hace parecer que el deceso fue por causas naturales.  ", 1, (blanco))
+                p2 = fuente3.render("La doctora Catherine Halsey,jefa del proyecto SPARTAN-II, ",1,(blanco))
+                p3 = fuente3.render("comento mÃ¡s adelante que este efecto secundario era " , 1, (blanco))
+                p4 = fuente3.render("desafortunado, pero la fecha lÃ­mite del proyecto no dejaba " , 1, (blanco))
+                p5 = fuente3.render("otra alternativa. Los niÃ±os originales fueron llevados al  " , 1, (blanco))
+                p6 = fuente3.render("planeta Reach, una de las jefaturas del UNSC, para entrenarlos , " , 1, (blanco))
+                p7 = fuente3.render("y convertirlos en supersoldados clase SPARTAN-II.En Reach, los ",1,(blanco))
+                p8 = fuente3.render("ninos secuestrados comenzaron el intensivo entrenamiento fisico",1,(blanco))
+                pantalla.blit(p1,(160,200))
+                pantalla.blit(p2,(160,230))
+                pantalla.blit(p3,(160,260))
+                pantalla.blit(p4,(160,290))
+                pantalla.blit(p5,(160,320))
+                pantalla.blit(p6,(160,350))
+                pantalla.blit(p7,(160,380))
+                pantalla.blit(p8,(160,410))
+                pantalla.blit(flechaderecha,(1100,550))
+                
+            if tecla[pygame.K_RIGHT]:
+                pantalla.blit(FondoIII,(0,0))
+                fuente3 = pygame.font.Font('Halo3.ttf', 25)
+                p1 = fuente3.render("mental y psicologico como parte del programa Spartan por parte de  ", 1, (blanco))
+                p2 = fuente3.render("Chief Petty Officer Mendez, asignandoles nuevos nÃºmeros de  ",1,(blanco))
+                p3 = fuente3.render("identificacion en vez de los nombres pasados." , 1, (blanco))
+                p4 = fuente3.render("John Fletcher es ahora John-117." , 1, (blanco))
+                p5 = fuente3.render("Este personaje es el encargado de salvar a la Humanidad de la " , 1,(blanco))
+                p6 = fuente3.render("invasion de los covenant que se quieren apoderarse de la tierra" , 1,(blanco))
+                pantalla.blit(p1,(160,200))
+                pantalla.blit(p2,(160,230))
+                pantalla.blit(p3,(160,260))
+                pantalla.blit(p4,(160,290))
+                pantalla.blit(p5,(160,320))
+                pantalla.blit(p6,(160,350))
+                pantalla.blit(esc,(1100,550))
+            
+            if tecla[pygame.K_ESCAPE]:
+                print "REGRESAR AL MENU"
+                salir = True
+        pygame.display.flip()
 #------------------------------------------------------------------------------------------------------------------------------------------------
 def MenuPausa(OpcionMenuPausa):
     FondoMenuPausa = pygame.image.load('FondoMenuPausa.png').convert_alpha() 
@@ -3137,17 +3125,17 @@ def MenuPausa(OpcionMenuPausa):
     pantalla.blit(halopausa1,(20,100))
     pantalla.blit(halopausa2,(750,100))
     if OpcionMenuPausa == 1:
-       ReanudarJuego,OpcionMenuPausa1 = TextoMenuPausa("REANUDAR JUEGO",710,300,(azul))
-       VolverMenuPrincipal,OpcionMenuPausa2 = TextoMenuPausa("MENU PRINCIPAL",710,370,(negro))
-       SalirEscritorio,OpcionMenuPausa3 = TextoMenuPausa("SALIR AL ESCRITORIO",710,440,(negro))
+        ReanudarJuego,OpcionMenuPausa1 = TextoMenuPausa("REANUDAR JUEGO",710,300,(azul))
+        VolverMenuPrincipal,OpcionMenuPausa2 = TextoMenuPausa("MENU PRINCIPAL",710,370,(negro))
+        SalirEscritorio,OpcionMenuPausa3 = TextoMenuPausa("SALIR AL ESCRITORIO",710,440,(negro))
     if OpcionMenuPausa == 2:
-       ReanudarJuego,OpcionMenuPausa1 = TextoMenuPausa("REANUDAR JUEGO",710,300,(negro))
-       VolverMenuPrincipal,OpcionMenuPausa2 = TextoMenuPausa("MENU PRINCIPAL",710,370,(azul))
-       SalirEscritorio,OpcionMenuPausa3 = TextoMenuPausa("SALIR AL ESCRITORIO", 710, 440,(negro))
+        ReanudarJuego,OpcionMenuPausa1 = TextoMenuPausa("REANUDAR JUEGO",710,300,(negro))
+        VolverMenuPrincipal,OpcionMenuPausa2 = TextoMenuPausa("MENU PRINCIPAL",710,370,(azul))
+        SalirEscritorio,OpcionMenuPausa3 = TextoMenuPausa("SALIR AL ESCRITORIO", 710, 440,(negro))
     if OpcionMenuPausa == 3:
-       ReanudarJuego,OpcionMenuPausa1 = TextoMenuPausa("REANUDAR JUEGO",710,300,(negro))
-       VolverMenuPrincipal,OpcionMenuPausa2 = TextoMenuPausa("MENU PRINCIPAL",710,370,(negro))
-       SalirEscritorio,OpcionMenuPausa3 = TextoMenuPausa("SALIR AL ESCRITORIO", 710, 440,(azul))
+        ReanudarJuego,OpcionMenuPausa1 = TextoMenuPausa("REANUDAR JUEGO",710,300,(negro))
+        VolverMenuPrincipal,OpcionMenuPausa2 = TextoMenuPausa("MENU PRINCIPAL",710,370,(negro))
+        SalirEscritorio,OpcionMenuPausa3 = TextoMenuPausa("SALIR AL ESCRITORIO", 710, 440,(azul))
     pantalla.blit(ReanudarJuego,OpcionMenuPausa1)
     pantalla.blit(VolverMenuPrincipal,OpcionMenuPausa2)
     pantalla.blit(SalirEscritorio,OpcionMenuPausa3)
@@ -3160,7 +3148,7 @@ while salir != True:
         if event.type == pygame.QUIT:
             salir = True
         if tecla[pygame.K_s]:
-	    sys.exit()
+            sys.exit()
         if tecla[pygame.K_UP] and opcion > 1 and MenuY > DimensionMenu[1]:
             opcion -= 1
             MenuY = MenuY-40
@@ -3169,27 +3157,26 @@ while salir != True:
             opcion += 1
             MenuY = MenuY+40
             Seleccion
-	if tecla[K_RETURN]:
-	    if opcion == 1:
-	       print "ACCEDER AL JUEGO"
-               sounds.EnterMenu.play()
-               IniciarJuego()
-               ReiniciarTiempo = True
-	    if opcion == 2:
-               print "ACCEDER A LAS INSTRUCCIONES"
-               sounds.EnterMenu.play()
-               Instrucciones()
-	    if opcion==3:
-	       print "ACCEDER A HISTORIA"
-	       sounds.EnterMenu.play()
-	       Historia()
-	    if opcion == 4:
-               print "ACCEDER A LOS CREDITOS"
-               sounds.EnterMenu.play()
-               Creditos()
-	    if opcion == 5:
-	       sys.exit()
+    if tecla[K_RETURN]:
+        if opcion == 1:
+            print "ACCEDER AL JUEGO"
+            sounds.EnterMenu.play()
+            IniciarJuego()
+            ReiniciarTiempo = True
+        if opcion == 2:
+            print "ACCEDER A LAS INSTRUCCIONES"
+            sounds.EnterMenu.play()
+            Instrucciones()
+        if opcion==3:
+            print "ACCEDER A HISTORIA"
+            sounds.EnterMenu.play()
+            Historia()
+        if opcion == 4:
+            print "ACCEDER A LOS CREDITOS"
+            sounds.EnterMenu.play()
+            Creditos()
+        if opcion == 5:
+            sys.exit()
     Menu(opcion)
     pygame.display.flip()
 pygame.quit()
-
